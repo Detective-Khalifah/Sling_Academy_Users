@@ -14,4 +14,5 @@
     <string name="hint_latitude">Latitude</string>
     <string name="hint_longitude">Longitude</string>
     <string name="hint_job">Job</string>
+    <string name="no_user_fetched">No users could be fetched — none found!</string>
 </resources>
