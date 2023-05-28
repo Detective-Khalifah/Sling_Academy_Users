@@ -194,26 +194,25 @@ public class FetchUsers {
 
                 users.add(new User(
                         id,
-                        firstName = firstName,
-                        lastName = lastName,
-                        dateOfBirth = formattedDate,
-                        gender = gender,
-                        eMail = eMail,
-                        phone = phone,
-                        country = country,
-                        state = state,
-                        city = city,
-                        street = street,
+                        firstName,
+                        lastName,
+                        dateOfBirth,
+                        gender,
+                        eMail,
+                        phone,
+                        country,
+                        state,
+                        city,
+                        street,
                         latitude,
                         longitude,
-                        job = job,
-                        zipcode = zipcode
+                        zipcode,
+                        job
                 ));
             }
 
         } catch (JSONException e) {
-            // If an error is thrown when executing any of the above statements in the switch
-            // statement of the "try" block,
+            // If an error is thrown when executing any of the above statements of the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.
             Log.i(LOG_TAG, "Problem parsing the JSON results_page", e);

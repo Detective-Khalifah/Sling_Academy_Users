@@ -14,25 +14,45 @@ class UserAdapter(private val mAppContext: Context, objects: List<User?>?) : Arr
     mAppContext, 0, objects!!
 ) {
     private var inflater: LayoutInflater? = null
-    private var binder: UserBinding? = null
+    private var binding: UserBinding? = null
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        if (inflater == null) inflater = (mAppContext as Activity).layoutInflater
+        val binding: UserBinding = convertView?.let {
+            DataBindingUtil.getBinding<UserBinding>(it)
+        } ?: run {
+            val inflater = LayoutInflater.from(parent.context)
+            DataBindingUtil.inflate<UserBinding>(inflater, R.layout.user, parent, false)
+        }
+
         val currentUser = getItem(position)
-        binder = DataBindingUtil.getBinding(
-            convertView!!
-        )
-        if (binder == null) binder = DataBindingUtil.inflate(
-            inflater!!, R.layout.user, parent, false
-        )
-        binder!!.user = currentUser
-        binder!!.executePendingBindings()
+        binding.user = currentUser
+        binding.executePendingBindings()
 
         // Set gender icon based on the value received
-        val genderTextInputLayout = binder!!.textGender
+        val genderTextInputLayout = binding.textGender
         setGenderIcon(genderTextInputLayout, currentUser!!.gender)
-        return binder!!.root
+
+        return binding.root
     }
+
+
+//    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+//        if (inflater == null) inflater = (mAppContext as Activity).layoutInflater
+//        val currentUser = getItem(position)
+//        binding = DataBindingUtil.getBinding(
+//            convertView!!
+//        )
+//        if (binding == null) binding = DataBindingUtil.inflate(
+//            inflater!!, R.layout.user, parent, false
+//        )
+//        binding!!.user = currentUser
+//        binding!!.executePendingBindings()
+//
+//        // Set gender icon based on the value received
+//        val genderTextInputLayout = binding!!.textGender
+//        setGenderIcon(genderTextInputLayout, currentUser!!.gender)
+//        return binding!!.root
+//    }
 
     private fun setGenderIcon(textInputLayout: TextInputLayout, gender: String) {
         var iconResId: Int? = null
