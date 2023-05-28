@@ -189,11 +189,14 @@ public class FetchUsers {
                                 ""
                 );
 
+                // Format the date using the Utils formatDate function
+                String formattedDate = Utils.Companion.formatDate(dateOfBirth);
+
                 users.add(new User(
                         id,
                         firstName = firstName,
                         lastName = lastName,
-                        dateOfBirth = dateOfBirth,
+                        dateOfBirth = formattedDate,
                         gender = gender,
                         eMail = eMail,
                         phone = phone,

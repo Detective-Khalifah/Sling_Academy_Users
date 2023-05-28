@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import com.blogspot.thengnet.slingacademyusers.databinding.UserBinding;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
@@ -40,6 +41,26 @@ public class UserAdapter extends ArrayAdapter<User> {
         binder.setUser(currentUser);
         binder.executePendingBindings();
 
+        // Set gender icon based on the value received
+        TextInputLayout genderTextInputLayout = binder.textGender;
+        setGenderIcon(genderTextInputLayout, currentUser.getGender());
+
         return binder.getRoot();
     }
+
+    private void setGenderIcon(TextInputLayout textInputLayout, String gender) {
+        Integer iconResId = null;
+        switch (gender) {
+            case "male":
+                iconResId = R.drawable.ic_male_24;
+                break;
+            case "female":
+                iconResId = R.drawable.ic_female_24;
+                break;
+            default:
+                break;
+        }
+        textInputLayout.setStartIconDrawable(iconResId);
+    }
+
 }

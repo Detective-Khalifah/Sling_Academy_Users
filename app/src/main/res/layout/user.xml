@@ -10,302 +10,355 @@
             type="com.blogspot.thengnet.slingacademyusers.User" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:elevation="4dp">
 
-        <ScrollView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".MainActivity">
+            android:layout_margin="8dp">
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_first_name"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:elevation="4dp">
+                android:hint="@string/hint_first_name"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toStartOf="@id/text_last_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:startIconDrawable="@drawable/ic_account_circle_24">
 
-                <LinearLayout
-                    android:id="@+id/linearUsers"
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:inputType="text|textPersonName|textCapCharacters"
+                    android:letterSpacing="0.02"
+                    android:singleLine="true"
+                    android:text="@{user.firstName}"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_first_name"
-                        app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_last_name"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_last_name"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/text_first_name"
+                app:layout_constraintTop_toTopOf="parent"
+                app:startIconDrawable="@drawable/ic_account_circle_24">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="text|textPersonName|textCapCharacters"
-                            android:letterSpacing="0.02"
-                            android:singleLine="true"
-                            android:text="@{user.firstName}"
-                            android:textAlignment="center"
-                            android:textAllCaps="true"
-                            android:textStyle="bold" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text|textPersonName|textCapCharacters"
+                    android:letterSpacing="0.02"
+                    android:singleLine="true"
+                    android:text="@{user.lastName}"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_last_name"
-                        app:endIconMode="clear_text">
+            <!-- TODO: Replace with a Spinner populated locally -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_date_of_birth"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_date_of_birth"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toStartOf="@id/text_gender"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_first_name"
+                app:startIconDrawable="@drawable/ic_date_range_24">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="text|textPersonName|textCapCharacters"
-                            android:letterSpacing="0.02"
-                            android:singleLine="true"
-                            android:text="@{user.lastName}"
-                            android:textAlignment="center"
-                            android:textAllCaps="true"
-                            android:textStyle="bold" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text|textCapCharacters"
+                    android:letterSpacing="0.02"
+                    android:singleLine="true"
+                    android:text="@{user.dateOfBirth}"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- TODO: Replace with a Spinner populated locally -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_date_of_birth"
-                        app:endIconMode="clear_text">
+            <!-- TODO: Replace with a Spinner populated locally -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_gender"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_gender"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/text_date_of_birth"
+                app:layout_constraintTop_toTopOf="@id/text_date_of_birth">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="text|textCapCharacters"
-                            android:letterSpacing="0.02"
-                            android:singleLine="true"
-                            android:text="@{user.dateOfBirth}"
-                            android:textAlignment="center"
-                            android:textAllCaps="true"
-                            android:textStyle="bold" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text|textCapCharacters"
+                    android:letterSpacing="0.02"
+                    android:singleLine="true"
+                    android:text="@{user.gender}"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- TODO: Replace with a Spinner populated locally -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_gender"
-                        app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_e_mail"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_e_mail"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toStartOf="@id/text_phone_number"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_date_of_birth"
+                app:startIconDrawable="@drawable/ic_email_24">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="text|textCapCharacters"
-                            android:letterSpacing="0.02"
-                            android:singleLine="true"
-                            android:text="@{user.gender}"
-                            android:textAlignment="center"
-                            android:textAllCaps="true"
-                            android:textStyle="bold" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text|textEmailAddress"
+                    android:letterSpacing="0.02"
+                    android:singleLine="true"
+                    android:text="@{user.eMail}"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_e_mail"
-                        app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_phone_number"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_phone_number"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/text_e_mail"
+                app:layout_constraintTop_toTopOf="@id/text_e_mail"
+                app:startIconDrawable="@drawable/ic_contact_page_24">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="text|textEmailAddress"
-                            android:letterSpacing="0.02"
-                            android:singleLine="true"
-                            android:text="@{user.eMail}"
-                            android:textAlignment="center"
-                            android:textAllCaps="true"
-                            android:textStyle="bold" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="phone"
+                    android:letterSpacing="0.02"
+                    android:singleLine="true"
+                    android:text="@{user.phoneNumber}"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_phone_number"
-                        app:endIconMode="clear_text"
-                        app:startIconDrawable="@drawable/ic_contact_page_24">
+            <!-- TODO: Replace with a Spinner populated locally or from an API -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_country"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_country"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toStartOf="@id/text_state"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_e_mail">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="phone"
-                            android:letterSpacing="0.02"
-                            android:singleLine="true"
-                            android:text="@{user.phoneNumber}"
-                            android:textAlignment="center"
-                            android:textAllCaps="true"
-                            android:textStyle="bold" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text|textCapCharacters"
+                    android:letterSpacing="0.02"
+                    android:singleLine="true"
+                    android:text="@{user.country}"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- TODO: Replace with a Spinner populated locally or from an API -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_country"
-                        app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_state"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_state"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toStartOf="@id/text_city"
+                app:layout_constraintStart_toEndOf="@id/text_country"
+                app:layout_constraintTop_toTopOf="@id/text_country">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="text|textCapCharacters"
-                            android:letterSpacing="0.02"
-                            android:singleLine="true"
-                            android:text="@{user.country}"
-                            android:textAlignment="center"
-                            android:textAllCaps="true"
-                            android:textStyle="bold" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text|textCapCharacters"
+                    android:letterSpacing="0.02"
+                    android:singleLine="true"
+                    android:text="@{user.state}"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_state"
-                        app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_city"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_city"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/text_state"
+                app:layout_constraintTop_toTopOf="@id/text_country"
+                app:startIconDrawable="@drawable/ic_location_city_24">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="text|textCapCharacters"
-                            android:letterSpacing="0.02"
-                            android:singleLine="true"
-                            android:text="@{user.state}"
-                            android:textAlignment="center"
-                            android:textAllCaps="true"
-                            android:textStyle="bold" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text|textCapCharacters"
+                    android:letterSpacing="0.02"
+                    android:singleLine="true"
+                    android:text="@{user.city}"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_city"
-                        app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_street"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_street"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toStartOf="@id/text_latitude"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_country"
+                app:startIconDrawable="@drawable/ic_streetview_24">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="text|textCapCharacters"
-                            android:letterSpacing="0.02"
-                            android:singleLine="true"
-                            android:text="@{user.city}"
-                            android:textAlignment="center"
-                            android:textAllCaps="true"
-                            android:textStyle="bold" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text|textCapCharacters"
+                    android:letterSpacing="0.02"
+                    android:singleLine="true"
+                    android:text="@{user.street}"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_street"
-                        app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_latitude"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_latitude"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toStartOf="@id/text_longitude"
+                app:layout_constraintStart_toEndOf="@id/text_street"
+                app:layout_constraintTop_toTopOf="@id/text_street"
+                app:startIconDrawable="@drawable/ic_location_searching_24">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="text|textCapCharacters"
-                            android:letterSpacing="0.02"
-                            android:singleLine="true"
-                            android:text="@{user.street}"
-                            android:textAlignment="center"
-                            android:textAllCaps="true"
-                            android:textStyle="bold" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text|textCapCharacters"
+                    android:letterSpacing="0.02"
+                    android:singleLine="true"
+                    android:text="@{String.valueOf(user.theLatitude)}"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_latitude"
-                        app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_longitude"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_longitude"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/text_latitude"
+                app:layout_constraintTop_toTopOf="@id/text_street"
+                app:startIconDrawable="@drawable/ic_location_searching_24">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="text|textCapCharacters"
-                            android:letterSpacing="0.02"
-                            android:singleLine="true"
-                            android:text="@{String.valueOf(user.theLatitude)}"
-                            android:textAlignment="center"
-                            android:textAllCaps="true"
-                            android:textStyle="bold" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text|textCapCharacters"
+                    android:letterSpacing="0.02"
+                    android:singleLine="true"
+                    android:text="@{String.valueOf(user.theLongitude)}"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_longitude"
-                        app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_zipcode"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_zipcode"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toStartOf="@id/text_job"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_street">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="text|textCapCharacters"
-                            android:letterSpacing="0.02"
-                            android:singleLine="true"
-                            android:text="@{String.valueOf(user.theLongitude)}"
-                            android:textAlignment="center"
-                            android:textAllCaps="true"
-                            android:textStyle="bold" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text|textCapCharacters"
+                    android:letterSpacing="0.02"
+                    android:singleLine="true"
+                    android:text="@{user.zipcode}"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_zipcode"
-                        app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_job"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_job"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/text_zipcode"
+                app:layout_constraintTop_toTopOf="@id/text_zipcode"
+                app:startIconDrawable="@drawable/ic_work_24">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="text|textCapCharacters"
-                            android:letterSpacing="0.02"
-                            android:singleLine="true"
-                            android:text="@{user.zipcode}"
-                            android:textAlignment="center"
-                            android:textAllCaps="true"
-                            android:textStyle="bold" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text|textCapWords"
+                    android:letterSpacing="0.02"
+                    android:singleLine="true"
+                    android:text="@{user.job}"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_job"
-                        app:endIconMode="clear_text">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="text|textCapWords"
-                            android:letterSpacing="0.02"
-                            android:singleLine="true"
-                            android:text="@{user.job}"
-                            android:textAlignment="center"
-                            android:textAllCaps="true"
-                            android:textStyle="bold" />
-                    </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-        </ScrollView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </layout>
